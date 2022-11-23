@@ -1,0 +1,23 @@
+
+obiecte={}
+
+n=int(input("Dati numarul de obiecte: "))
+v=int(input("Dati volumul rucsacului: "))
+
+for i in range(1,n+1):
+    volum=int(input(f"Dati volumul obiectului {i} = "))
+    pret=int(input(f"Dati pretul obiectului {i} = "))
+    obiecte[volum]=pret
+
+print(obiecte)
+obiecte_sortat=sorted(obiecte.items(), key=lambda x: (-x[1], x[0]))
+
+volumobiecte,prettotal=0,0
+
+for obiect in obiecte_sortat:
+    if volumobiecte<=v and volumobiecte+obiect[0]<=v:
+        volumobiecte+=obiect[0]
+        prettotal+=obiect[1]
+        print(f"In rucsac s-a introdus obiectul cu caracteristicile {obiect}")
+
+print(f"Pretul total al obiectelor: {prettotal}, volumul ocupat: {volumobiecte}")
